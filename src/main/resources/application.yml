@@ -3,7 +3,16 @@ spring:
     producer:
       bootstrap-servers: localhost:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      properties:
+        schema:
+          registry:
+            url: "http://localhost:8081"
+
+
+avro:
+  topic:
+    name: pessoa.v1
 
 topic:
   bora-praticar: topic_bora_praticar_kafka
